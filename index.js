@@ -24,5 +24,5 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 
 app.get('/', function(req, res) {
-  res.send('index')
+  res.render('index')
 })
