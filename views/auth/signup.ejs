@@ -1,20 +1,17 @@
-<h3>but this sign-up form works</h3>
-<form action="/auth/signup" method="POST">
-    <div class="form-group">
 
-        <div class="form-group">
-            <label for="authName">Username</label>
-            <input id="authName" class="form-control" type="text" name="username">
-        </div>
 
-        <label for="authEmail">Email</label>
-        <input id="authEmail" class="form-control" type="email" name="email">
-    </div>
+<link href="https://fonts.googleapis.com/css?family=Bubblegum+Sans" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Sofia' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="../css/style.css">
 
-    <div class="form-group">
-        <label for="authPassword">Password</label>
-        <input id="authPassword" class="form-control" type="password" name="password">
-    </div>
+<div class="login">
+    <form action="/auth/signup" method="POST">
+        <h2>Register</h2>
+        <input name="username" placeholder="Username" type="text" id="authUsername" class="form-control"></input>
+        <input name="password" placeholder="Password" type="password" id="authPassword" class="form-control"></input>
+        <input name="email" placeholder="E-Mail" type="text" id="authEmail" class="form-control"></input>
 
-    <input class="btn btn-primary" type="submit">
-</form>
+        <input class="animated" type="submit" value="Register"></input>
+    </form>
+    <a class="forgot" href="#">Already have an account? Log in here!</a>
+</div>
