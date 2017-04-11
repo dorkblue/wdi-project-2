@@ -26,3 +26,7 @@ app.use(bodyParser.json())
 app.get('/', function(req, res) {
   res.render('index')
 })
+
+app.listen(port, function() {
+  console.log('express is running on port ' + port)
+})
