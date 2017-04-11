@@ -6,12 +6,15 @@
 
 <div class="login">
     <form action="/auth/signup" method="POST">
+      <div class="form-group">
+
         <h2>Register</h2>
         <input name="username" placeholder="Username" type="text" id="authUsername" class="form-control"></input>
         <input name="password" placeholder="Password" type="password" id="authPassword" class="form-control"></input>
         <input name="email" placeholder="E-Mail" type="text" id="authEmail" class="form-control"></input>
 
         <input class="animated" type="submit" value="Register"></input>
+      </div>
     </form>
     <a class="forgot" href="#">Already have an account? Log in here!</a>
 </div>
