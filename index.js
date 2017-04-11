@@ -4,7 +4,7 @@ var app = express()
 var port = process.env.PORT || 7777
 
 // mongoose setup
-var dbURI = process.env.PROD_MONGODB || 'mongodb://localhost:27017/mymdb'
+var dbURI = process.env.PROD_MONGODB || 'mongodb://localhost:27017/shoppingbookmark'
 var mongoose = require('mongoose')
 mongoose.Promise = global.Promise
 mongoose.connect(dbURI)
