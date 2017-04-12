@@ -12,7 +12,7 @@ body {
 h2 {
 	color: #6D7781;
 	font-family: 'Clicker Script';
-	font-size: 15px;
+	font-size: 17px;
 	font-weight: bold;
 	font-size: 3.6em;
 	text-align: center;
@@ -33,6 +33,7 @@ a {
 }
 
 input[type="text"], input[type="password"] {
+  font-family: 'Poppins';
 	width: 350px;
 	padding: 20px 0px;
 	background: transparent;
@@ -40,25 +41,7 @@ input[type="text"], input[type="password"] {
 	/*border-bottom: 1px solid #435160;*/
 	outline: none;
 	color: #6D7781;
-	font-size: 16px;
-}
-
-input[type=checkbox] {
-	display: none;
-}
-
-label {
-	display: block;
-	position: absolute;
-	margin-right: 10px;
-	width: 8px;
-	height: 8px;
-	border-radius: 50%;
-	background: transparent;
-	content: "";
-	transition: all .3s ease-in-out;
-	cursor: pointer;
-	border: 3px solid #435160;
+	font-size: 14px;
 }
 
 input[type="submit"] {
@@ -80,15 +63,15 @@ input[type="submit"]:hover {
 }
 
 .forgot {
-	margin-top: 30px;
+	margin-top: 15px;
 	display: block;
-	font-size: 12px;
+	font-size: 14px;
 	text-align: center;
 	font-weight: bold;
 }
 
 .forgot:hover {
-	margin-top: 30px;
+	margin-top: 15px;
 	display: block;
 	font-size: 16px;
 	text-align: center;
@@ -99,7 +82,7 @@ input[type="submit"]:hover {
 ::-webkit-input-placeholder {
   font-family: 'Poppins';
 	color: #8F8F8F;
-	font-size: 12px;
+	font-size: 14px;
 }
 
 .animated {
