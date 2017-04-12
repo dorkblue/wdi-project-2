@@ -4,9 +4,9 @@
 }
 
 body {
-	background: #A2E4FA;
+	background: #F5CEE7;
 	color: #435160;
-	font-family: 'Bubblegum Sans', sans-serif;
+	font-family: 'Poppins', sans-serif;
 }
 
 h2 {
@@ -62,27 +62,27 @@ label {
 }
 
 input[type="submit"] {
-	background: #50F2C2;
+	background: #C3CBFA;
 	border: 0;
 	width: 350px;
 	height: 40px;
 	border-radius: 5px;
 	color: #fff;
-  font-family: 'Bubblegum Sans';
-	font-size: 16px;
+  font-family: 'Poppins';
+	font-size: 14px;
 	cursor: pointer;
 	transition: background .3s ease-in-out;
 }
 
 input[type="submit"]:hover {
-	background: #16aa56;
+	background: #A5B1FA;
 	animation-name: shake;
 }
 
 .forgot {
 	margin-top: 30px;
 	display: block;
-	font-size: 16px;
+	font-size: 12px;
 	text-align: center;
 	font-weight: bold;
 }
@@ -97,9 +97,9 @@ input[type="submit"]:hover {
 }
 
 ::-webkit-input-placeholder {
-  font-family: 'Bubblegum Sans';
-	color: #435160;
-	font-size: 14px;
+  font-family: 'Poppins';
+	color: #8F8F8F;
+	font-size: 12px;
 }
 
 .animated {
