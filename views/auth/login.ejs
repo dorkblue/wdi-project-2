@@ -1,16 +1,15 @@
-<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/login.css">
 
 <div class="login">
-    <form action="/auth/signup" method="POST">
+    <form action="/auth/login" method="POST">
       <div class="form-group">
 
-        <h2>Register</h2>
+        <h2>Welcome Back!</h2>
         <input name="username" placeholder="Username" type="text" id="authUsername" class="form-control" autofocus="autofocus"></input>
         <input name="password" placeholder="Password" type="password" id="authPassword" class="form-control"></input>
-        <input name="email" placeholder="E-Mail" type="text" id="authEmail" class="form-control"></input>
 
         <input class="animated" type="submit" value="SUBMIT"></input>
       </div>
     </form>
-    <a class="forgot" href="https://wdi-project-2-imouto2005.herokuapp.com/login">Already have an account? Log in here!</a>
+    <a class="forgot" href="https://wdi-project-2-imouto2005.herokuapp.com/auth/signup">New to this site? Sign up here!</a>
 </div>

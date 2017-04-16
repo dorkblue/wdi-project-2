@@ -32,3 +32,29 @@
 </body>
 
 </html>
+
+//////
+<h2>Your items here:</h2>
+    <ul>
+              <% allItems.forEach(function(item, index) {%>
+                  <li><ul>
+                      <li><%= "Title: " + item.title %></li>
+                      <li><%= "URL: " + item.url %></li>
+                      <li><%= "Description: " + item.description %></li>
+                      <li><%= "Tag :" + item.tag %></li>
+                  </ul></li>
+              <% }) %>
+          </ul>
+
+
+          <h2>Search results:</h2>
+              <ul id="itemlist">
+                        <% foundItems.forEach(function(item, index) {%>
+                            <li><ul>
+                                <li><%= "Title: " + item.title %></li>
+                                <li><%= "URL: " + item.url %></li>
+                                <li><%= "Description: " + item.description %></li>
+                                <li><%= "Tag: " + item.tag %></li>
+                            </ul></li>
+                        <% }) %>
+                    </ul>

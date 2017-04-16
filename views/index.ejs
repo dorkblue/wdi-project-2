@@ -1,12 +1,78 @@
 <html>
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>My Something</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Something</title>
 </head>
+
 <body>
-  <h2>This is the homepage. There is nothing here but soon there will be.</h2>
-<script src="js/script.js" charset="utf-8"></script>
+    <h2>Welcome back, <%= userName %>!</h2>
+
+    <form action="/" method="POST">
+        <h3><label>Search for item(s) by tag</label></h3>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Enter tag here" name="search" autofocus="autofocus">
+        </div>
+    </form>
+
+    <h2>Search results:</h2>
+    <ul id="itemlist">
+        <% foundItems.forEach(function(item, index) {%>
+            <li>
+                <ul>
+                    <li>
+                        <%= "Title: " + item.title %>
+                    </li>
+                    <li>
+                        <%= "URL: " + item.url %>
+                    </li>
+                    <li>
+                        <%= "Description: " + item.description %>
+                    </li>
+                    <li>
+                        <%= "Tag: " + item.tag %>
+                    </li>
+                </ul>
+            </li>
+            <% }) %>
+    </ul>
+
+    <h2>All here:</h2>
+    <ul id="itemlist">
+        <% allItems.forEach(function(item, index) {%>
+            <li>
+                <ul>
+                    <li>
+                        <%= "Title: " + item.title %>
+                    </li>
+                    <li>
+                        <%= "URL: " + item.url %>
+                    </li>
+                    <li>
+                        <%= "Description: " + item.description %>
+                    </li>
+                    <li>
+                        <%= "Tag: " + item.tag %>
+                    </li>
+                </ul>
+            </li>
+            <% }) %>
+    </ul>
+
+    <div id="additem">
+        <form action="/create" method="GET">
+            <input type="submit" value="Add an item"></input>
+        </form>
+    </div>
+    <div id="logout">
+        <form action="/auth/logout" method="GET">
+            <input type="submit" value="LOG OUT"></input>
+        </form>
+    </div>
+
+    <script src="js/script.js" charset="utf-8"></script>
 </body>
+
 </html>

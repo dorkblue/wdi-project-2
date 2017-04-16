@@ -14,7 +14,7 @@ router.get('/login', function(req, res) {
 router.get('/logout', function(req, res) {
   req.logout();
   // res.redirect('/auth/logout');
-  res.render('auth/login')
+  res.render('auth/logout')
   req.flash('success', 'You have logged out');
 });
 

@@ -1,10 +1,14 @@
-// express set up
 var express = require('express')
 var app = express()
 var port = process.env.PORT || 7777
+var passport = require('./config/passport');
+var dotenv = require('dotenv').config({ silent: true })
+var flash = require('connect-flash');
+var session = require('express-session');
+var bodyParser = require('body-parser')
+var MongoStore = require('connect-mongo')(session)
 
-// mongoose setup
-var dbURI = process.env.PROD_MONGODB || 'mongodb://admin:admin@ds159180.mlab.com:59180/shoppingbookmark'
+var dbURI = process.env.PROD_MONGODB
 var mongoose = require('mongoose')
 mongoose.Promise = global.Promise
 mongoose.connect(dbURI)
@@ -19,7 +23,16 @@ db.once('open', function() {
   console.log('really really connected. like for real!');
 });
 
-var bodyParser = require('body-parser')
+
+app.use(session({
+  secret: process.env.secret,
+  resave: false,
+  saveUninitialized: true,
+  store: new MongoStore({ url: dbURI })
+}))
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(express.static('public')) // link css files and stuff
 
@@ -28,11 +41,14 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(bodyParser.json())
 
+app.use('/auth', require('./routers/auth'));
+
+const itemRouter = require('./routers/item_router')
+app.use('/', itemRouter)
+
 app.get('/', function(req, res) {
   res.render('index')
 })
-
-app.use('/auth', require('./controllers/auth'));
 
 app.listen(port, function() {
   console.log('express is running on port ' + port)
