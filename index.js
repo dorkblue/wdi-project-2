@@ -7,6 +7,7 @@ var flash = require('connect-flash');
 var session = require('express-session');
 var bodyParser = require('body-parser')
 var MongoStore = require('connect-mongo')(session)
+var isLoggedIn = require('./middleware/isLoggedIn');
 
 var dbURI = process.env.PROD_MONGODB
 var mongoose = require('mongoose')
@@ -34,6 +35,13 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(function(req, res, next) {
+  // before every route, attach the flash messages and current user to res.locals
+  res.locals.alerts = req.flash();
+  res.locals.currentUser = req.user;
+  next();
+});
+
 app.use(express.static('public')) // link css files and stuff
 
 app.use(bodyParser.urlencoded({
@@ -43,12 +51,18 @@ app.use(bodyParser.json())
 
 app.use('/auth', require('./routers/auth'));
 
+app.use(isLoggedIn)
+// pages that would require user to be logged in to be able to view
 const itemRouter = require('./routers/item_router')
 app.use('/', itemRouter)
 
 app.get('/', function(req, res) {
   res.render('index')
 })
+
+app.get('/create', function(req, res) {
+  res.render('item/create');
+});
 
 app.listen(port, function() {
   console.log('express is running on port ' + port)

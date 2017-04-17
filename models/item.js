@@ -11,6 +11,9 @@ var itemSchema = new mongoose.Schema({
   description: {
     type: String
   },
+  imageurl: {
+    type: String
+  },
   tag: {
     type: String
   },

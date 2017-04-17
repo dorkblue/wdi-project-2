@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Item = require('../models/item');
+var request = require('request');
 var itemController = require('../controllers/item_controller')
 
 router.get('/create', function(req, res) {
@@ -8,24 +9,20 @@ router.get('/create', function(req, res) {
 });
 
 router.get('/', itemController.itemList)
+router.post('/item/delete', itemController.removeItem)
 
-router.post('/create', function(req, res) {
-  Item.create({
-    title: req.body.title,
-    url: req.body.url,
-    description: req.body.description,
-    tag: req.body.tag,
-    user_id: req.user._id,
-  }, function(err, createdItem) {
-    if(err){
-      console.log('item was not created');
-      res.redirect('/create');
-    } else {
-      console.log('item was created');
-      res.redirect('/');
-    }
-  });
-});
+router.get('/item/:itemId/edit', function(req, res) {
+  var itemId = req.params.itemId
+  Item.find({_id: itemId}, (err, output) => {
+    if (err) console.error(err)
+    res.render('item/edit', {
+      foundItem: output
+    })
+  })
+})
+
+router.post('/item/edit', itemController.editItem)
+router.post('/create', itemController.createItem)
 
 router.post('/', function(req, res) {
   Item.find( { tag: req.body.search, user_id: req.user._id }, (err, output) => {

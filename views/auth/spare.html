@@ -58,3 +58,23 @@
                             </ul></li>
                         <% }) %>
                     </ul>
+
+          http://api.linkpreview.net/?key=58ec45fb27cde0d596e650bad61227e6ceaf726e69395&q=http%3A%2F%2Flist.qoo10.sg%2Fitem%2F15-4-NEW-600-STYLE-S-7XL-NEW-PLUS-SIZE-FASHION-LADY-DRESS-OL%2F426097766
+
+          <form action="/item/edit" method="POST">
+              <h3><label>Edit item</label></h3>
+              <% allItems.forEach(function(item, index) {%>
+              <div class="form-group">
+                <input type="text" class="form-control" id="title" placeholder="Title" name="title" value="<%= item.title %>" autofocus="autofocus">
+              </div>
+
+              <div class="form-group">
+                <input type="text" class="form-control" id="description" placeholder="Description" name="description" value="<%= item.description %>">
+              </div>
+
+              <div class="form-group">
+                <input type="text" class="form-control" id="tag" placeholder="Tag" name="tag" value="<%= item.tag %>">
+              </div>
+              <button type="submit" class="btn btn-default" id="submit">Submit</button>
+            </form>
+                  <% }) %>

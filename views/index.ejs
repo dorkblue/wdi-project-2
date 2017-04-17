@@ -24,16 +24,31 @@
             <li>
                 <ul>
                     <li>
+                    <% if (item.imageurl === "") { %>
+                      <img src="http://www.novelupdates.com/img/noimagefound.jpg">
+                    <%} else {%>
+                    <img src=<%= item.imageurl %>>
+                    <%}%>
+
+                    </li>
+                    <li>
                         <%= "Title: " + item.title %>
                     </li>
-                    <li>
-                        <%= "URL: " + item.url %>
-                    </li>
-                    <li>
+
+                    <li id="description">
                         <%= "Description: " + item.description %>
                     </li>
                     <li>
                         <%= "Tag: " + item.tag %>
+                    </li>
+                    <li>
+                      <form action="/item/delete" method="POST">
+                          <input type="submit" value="Remove item" name="<%= item._id %>"></input>
+                      </form>
+                    </li>
+                    <li>
+                      <a href="/item/<%= item._id %>/edit">Edit</a>
+
                     </li>
                 </ul>
             </li>

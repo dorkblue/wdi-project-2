@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="../css/style.css">
+
+<form action="/item/edit" method="POST">
+    <h3><label>Edit item</label></h3>
+    <% foundItem.forEach(function(item, index) {%>
+    <div class="form-group">
+      <input type="text" class="form-control" id="title" placeholder="Title" name="title" value="<%= item.title %>" autofocus="autofocus">
+    </div>
+
+    <div class="form-group">
+      <input type="text" class="form-control" id="description" placeholder="Description" name="description" value="<%= item.description %>">
+    </div>
+
+    <div class="form-group">
+      <input type="text" class="form-control" id="tag" placeholder="Tag" name="tag" value="<%= item.tag %>">
+    </div>
+    <input type="hidden" name="item_id" value="<%= item._id%>" />
+    <input type="submit"></input>
+  </form>
+        <% }) %>
