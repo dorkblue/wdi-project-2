@@ -1,0 +1,70 @@
+body {
+  margin: 0 auto;
+  padding: 10px;
+  max-width: 800px;
+  width: 90%;
+  background: white
+}
+div {
+  text-align: center;
+}
+h2 {
+	color: #6D7781;
+	font-family: 'Clicker Script';
+	font-size: 17px;
+	font-weight: bold;
+	font-size: 3.6em;
+	text-align: center;
+	margin-bottom: 20px;
+  margin-top: 10px
+}
+form {
+    display: inline;
+}
+
+#signup {
+font-family: "Poppins";
+border-style: solid;
+background-color: #F5CEE7;
+border-color: #F5CEE7;
+border-width: 3px;
+font-size: 15px;
+color: white;
+border-radius: 5px;
+width: 100px;
+outline: none;
+}
+#signup:hover {
+  background: #F58CEE
+}
+#login {
+font-family: "Poppins";
+border-style: solid;
+background-color: #9AE4FC;
+border-color: #9AE4FC;
+border-width: 3px;
+font-size: 15px;
+color: white;
+border-radius: 5px;
+width: 100px;
+outline: none;
+}
+#login:hover {
+  background: #42D1FF
+}
+#about {
+font-family: "Reenie Beanie";
+margin-top: 5px;
+margin-bottom: 15px;
+font-size: 32px;
+width: 700px;
+}
+#buttons {
+  margin-top: 150px
+}
+#myModal {
+  display: none; /* Hidden by default */
+}
+#about:hover #myModal{
+  display: inline-block;
+}

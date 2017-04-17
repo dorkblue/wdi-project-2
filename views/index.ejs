@@ -1,4 +1,5 @@
 <html>
+<link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon" />
 
 <head>
     <meta charset="UTF-8">
@@ -8,52 +9,8 @@
 </head>
 
 <body>
-    <h2>Welcome back, <%= userName %>!</h2>
-
-    <form action="/" method="POST">
-        <h3><label>Search for item(s) by tag</label></h3>
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Enter tag here" name="search" autofocus="autofocus">
-        </div>
-    </form>
-
-    <h2>Items:</h2>
-
-    <ul id="itemlist">
-        <% allItems.forEach(function(item, index) {%>
-            <li>
-                <ul>
-                    <li>
-                    <% if (item.imageurl === "") { %>
-                      <img src="http://www.novelupdates.com/img/noimagefound.jpg">
-                    <%} else {%>
-                    <img src=<%= item.imageurl %>>
-                    <%}%>
-
-                    </li>
-                    <li>
-                        <%= "Title: " + item.title %>
-                    </li>
-
-                    <li id="description">
-                        <%= "Description: " + item.description %>
-                    </li>
-                    <li>
-                        <%= "Tag: " + item.tag %>
-                    </li>
-                    <li>
-                      <form action="/item/delete" method="POST">
-                          <input type="submit" value="Remove item" name="<%= item._id %>"></input>
-                      </form>
-                    </li>
-                    <li>
-                      <a href="/item/<%= item._id %>/edit">Edit</a>
-
-                    </li>
-                </ul>
-            </li>
-            <% }) %>
-    </ul>
+    <h2>Welcome, <%= userName %>!</h2>
+    <center><img src="../img/hellowelcome.png"></center>
 
     <div id="additem">
         <form action="/create" method="GET">
@@ -65,6 +22,53 @@
             <input type="submit" value="LOG OUT"></input>
         </form>
     </div>
+
+    <form action="/" method="POST">
+        <h2 style="font-size: 30px"><label>Search for item(s) by tag</label></h2>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Enter tag here" name="search" autofocus="autofocus">
+        </div>
+    </form>
+
+    <h2>Items:</h2>
+
+    <ul class="item-list">
+        <% allItems.forEach(function(item, index) {%>
+            <li>
+                <ul>
+                    <li>
+                    <% if (item.imageurl === "") { %>
+                      <img src="http://www.novelupdates.com/img/noimagefound.jpg">
+                    <%} else {%>
+                    <img src=<%= item.imageurl %>>
+                    <%}%>
+
+                    </li>
+                    <li id="itemtitle">
+                    <a href="<%= item.url %>"><%= item.title %></a>
+
+                    </li>
+
+                    <li id="description">
+                        <b>DESCRIPTION: </b><%= item.description %>
+                    </li>
+                    <li>
+                        <b>TAG: </b><i><%= item.tag %></i>
+                    </li>
+                    <li>
+                      <form action="/item/delete" method="POST">
+                          <input type="submit" value="Remove item" name="<%= item._id %>"></input>
+                      </form>
+                    </li>
+                    <li>
+                      <a href="/item/<%= item._id %>/edit">Edit</a>
+                    </li>
+                </ul>
+            </li>
+            <% }) %>
+    </ul>
+
+
 
     <script src="js/script.js" charset="utf-8"></script>
 </body>
