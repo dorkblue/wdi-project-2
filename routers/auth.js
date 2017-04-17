@@ -24,19 +24,28 @@ router.post('/signup', function(req, res) {
     email: req.body.email,
     password: req.body.password
   }, function(err, createdUser) {
-    if(err){
+    if (err) {
+      console.log('err', err)
+      req.flash('error', 'Could not create user account');
       res.redirect('/auth/signup');
     } else {
-      res.redirect('/');
+      console.log('user is authenticated');
+      passport.authenticate('local', {
+        successRedirect: '/',
+        failureRedirect: '/failed',
+        successFlash: 'Account created and logged in'
+      })(req, res)
     }
-  });
-});
+  })
+})
 
-router.post('/login', passport.authenticate('local', {
+router.post('/login', function(req, res) {
+  passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/auth/login',
   failureFlash: 'Invalid username and/or password',
   successFlash: 'You have logged in'
-}));
+  })(req, res)
+});
 
 module.exports = router;

@@ -25,20 +25,22 @@ db.once('open', function() {
 });
 
 
+
 app.use(session({
   secret: process.env.secret,
   resave: false,
   saveUninitialized: true,
   store: new MongoStore({ url: dbURI })
 }))
-app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 app.use(function(req, res, next) {
   // before every route, attach the flash messages and current user to res.locals
   res.locals.alerts = req.flash();
   res.locals.currentUser = req.user;
+
   next();
 });
 
@@ -52,17 +54,7 @@ app.use(bodyParser.json())
 app.use('/auth', require('./routers/auth'));
 
 app.use(isLoggedIn)
-// pages that would require user to be logged in to be able to view
-const itemRouter = require('./routers/item_router')
-app.use('/', itemRouter)
-
-app.get('/', function(req, res) {
-  res.render('index')
-})
-
-app.get('/create', function(req, res) {
-  res.render('item/create');
-});
+app.use('/', require('./routers/item_router'))
 
 app.listen(port, function() {
   console.log('express is running on port ' + port)
