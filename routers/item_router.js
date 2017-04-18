@@ -64,7 +64,7 @@ router.post('/', function(req, res) {
 router.get('/item/:itemId/edit', function(req, res) {
   var itemId = req.params.itemId
   Item.find({_id: itemId}, (err, output) => {
-    if (err) console.error(err)
+    if (err) req.flash('Could not find any items, please try again!')
     res.render('item/edit', {
       foundItem: output
     })
