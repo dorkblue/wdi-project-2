@@ -32,7 +32,7 @@
 
     <h2>Items:</h2>
 
-    <ul class="item-list">
+  <ul class="item-list">
         <% allItems.forEach(function(item, index) {%>
             <li>
                 <ul>
@@ -56,19 +56,21 @@
                         <b>TAG: </b><i><%= item.tag %></i>
                     </li>
                     <li>
-                      <form action="/item/delete" method="POST">
-                          <input type="submit" value="Remove item" name="<%= item._id %>"></input>
+                      <form action="/item/<%= item._id %>/edit">
+                          <input id="edit-item" type="submit" value="Edit" />
                       </form>
                     </li>
                     <li>
-                      <a href="/item/<%= item._id %>/edit">Edit</a>
+                      <form action="/item/delete" method="POST">
+                          <input type="submit" id="remove-item" value="Remove item" name="<%= item._id %>"></input>
+                      </form>
                     </li>
                 </ul>
             </li>
             <% }) %>
     </ul>
 
-
+<h2 style="font-size: 30px">You have reached the end of this content segment.</h2>
 
     <script src="js/script.js" charset="utf-8"></script>
 </body>
