@@ -20,7 +20,7 @@ function removeItem(req, res) {
     _id: userId[0]
   }, (err, output) => {
     if (err) return console.err(err)
-    res.redirect('/')
+    res.redirect('/homepage')
   })
 }
 
@@ -35,7 +35,7 @@ function editItem(req, res) {
     }
   }, (err, output) => {
     if (err) console.error(err)
-    res.redirect('/')
+    res.redirect('/homepage')
   })
 }
 

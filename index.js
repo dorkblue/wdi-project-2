@@ -51,7 +51,7 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(bodyParser.json())
 
-app.get('/homepage', function(req, res) {
+app.get('/', function(req, res) {
   res.render('landingpage')
 })
 app.use('/auth', require('./routers/auth'));

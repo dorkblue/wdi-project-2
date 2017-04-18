@@ -31,7 +31,7 @@ router.post('/signup', function(req, res) {
     } else {
       console.log('user is authenticated');
       passport.authenticate('local', {
-        successRedirect: '/',
+        successRedirect: '/homepage',
         failureRedirect: '/failed',
         successFlash: 'Account created and logged in'
       })(req, res)
@@ -41,7 +41,7 @@ router.post('/signup', function(req, res) {
 
 router.post('/login', function(req, res) {
   passport.authenticate('local', {
-  successRedirect: '/',
+  successRedirect: '/homepage',
   failureRedirect: '/auth/login',
   failureFlash: 'Invalid username and/or password',
   successFlash: 'You have logged in'

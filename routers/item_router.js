@@ -4,14 +4,13 @@ var Item = require('../models/item');
 var request = require('request');
 var itemController = require('../controllers/item_controller')
 
+router.get('/homepage', itemController.itemList)
+
 router.get('/create', function(req, res) {
   res.render('item/create');
 });
 
-router.get('/', itemController.itemList)
-
 router.post('/item/delete', itemController.removeItem)
-
 router.post('/item/edit', itemController.editItem)
 router.post('/create', (req, res) => {
   Item.create({
@@ -44,14 +43,14 @@ router.post('/create', (req, res) => {
         }, function(err, output) {
           if (err) console.log(err);
           // if (output) console.log(output);
-          res.redirect('/')
+          res.redirect('/homepage')
         })
       })
     }
   })
 })
 
-router.post('/', function(req, res) {
+router.post('/homepage', function(req, res) {
   Item.find( { tag: req.body.search, user_id: req.user._id }, (err, output) => {
     if (err) res.send(err)
     res.render('index', {
