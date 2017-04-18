@@ -1,22 +1,25 @@
 <link rel="stylesheet" href="/css/style.css">
+<link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon" />
 
 <form action="/item/edit" method="POST" id="editform">
-    <h3><label>Edit item</label></h3>
+    <h2><label>Edit item details</label></h2>
     <% foundItem.forEach(function(item, index) {%>
     <div class="form-group">
-      <input type="text" class="form-control" id="title" placeholder="Title" name="title" value="<%= item.title %>" autofocus="autofocus">
+      <label>Title: </label>
+      <textarea name="title" form="editform" id="title" autofocus="autofocus"> <%= item.title %> </textarea>
     </div>
 
     <div class="form-group">
-
+      <label>Description: </label>
       <textarea name="description" form="editform" id="description"> <%= item.description %> </textarea>
 
     </div>
 
     <div class="form-group">
+    <label>Tag: </label>
       <input type="text" class="form-control" id="tag" placeholder="Tag" name="tag" value="<%= item.tag %>">
     </div>
     <input type="hidden" name="item_id" value="<%= item._id%>" />
-    <input type="submit"></input>
+    <center><input type="submit"></input></center>
   </form>
         <% }) %>
