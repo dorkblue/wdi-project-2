@@ -31,6 +31,13 @@ h2 {
 	margin-top: 50px;
 }
 
+h3 {
+	color: #D60D0D;
+	text-align: center;
+	font-family: 'Poppins';
+	font-size: 10px;
+}
+
 form {
     display: inline;
 }
@@ -46,7 +53,7 @@ ul {
     list-style-type: none;*/
     padding-left: 0;
 		list-style-type:none;
-		margin:0px;
+		margin:10px;
 		padding:0px;
 }
 
@@ -59,7 +66,7 @@ li {
 		display:inline-block;
 	  vertical-align:bottom;
 	  width:500px;
-	  margin: 0px 0px 5px 19px;
+	  margin: 0px 0px 10px 19px;
 		text-align: center;
 		/*overflow: auto;*/
 }
@@ -200,6 +207,10 @@ textarea {
 	background: #9EE3FF;
 }
 
+#additem:hover {
+	background: #21BFFF;
+}
+
 #display-all {
 	margin-bottom: 5px;
 	text-align: center
@@ -211,6 +222,16 @@ textarea {
   top: 10px;
   right: 10px;
 	width: 100px
+}
+
+#logout:hover {
+	background: #9E0808;
+}
+
+#nomoreload {
+	background: #D10034;
+	font-size: 25px;
+	color: white
 }
 
 .form-group {
@@ -239,4 +260,23 @@ textarea {
 	20%, 40%, 60%, 80% {
 		transform: translateX(10px);
 	}
+}
+
+@keyframes pulse_animation {
+	0% { transform: scale(1); }
+	30% { transform: scale(1); }
+	40% { transform: scale(1.08); }
+	50% { transform: scale(1); }
+	60% { transform: scale(1); }
+	70% { transform: scale(1.05); }
+	80% { transform: scale(1); }
+	100% { transform: scale(1); }
+}
+
+.pulse {
+	animation-name: pulse_animation;
+	animation-duration: 1500ms;
+	transform-origin:70% 70%;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
 }

@@ -52,7 +52,7 @@ router.post('/create', (req, res) => {
 
 router.post('/homepage', function(req, res) {
   Item.find( { tag: req.body.search, user_id: req.user._id }, (err, output) => {
-    if (err) res.send(err)
+    if (output == null) req.flash('Could not find any items, please try again!')
     res.render('index', {
       allItems: output,
       userName: req.user.username
@@ -63,7 +63,6 @@ router.post('/homepage', function(req, res) {
 router.get('/item/:itemId/edit', function(req, res) {
   var itemId = req.params.itemId
   Item.find({_id: itemId}, (err, output) => {
-    if (err) req.flash('Could not find any items, please try again!')
     res.render('item/edit', {
       foundItem: output
     })

@@ -9,23 +9,19 @@
 </head>
 
 <body style="background: white">
-  <div>
-      <form action="/auth/logout" method="GET">
-          <input id="logout" type="submit" value="LOG OUT"></input>
-</div>
+    <div id="logoutbutton">
+        <form action="/auth/logout" method="GET">
+            <input id="logout" type="submit" value="LOG OUT"></input>
+          </form>
+    </div>
     <h1>Welcome, <%= userName %>!</h1>
     <center><img src="../img/hellowelcome.png"></center>
 
     <div id="additemdiv">
         <form action="/create" method="GET">
-            <input id="additem" type="submit" value="Add an item"></input>
+            <input class="pulse" id="additem" type="submit" value="Add an item"></input>
         </form>
     </div>
-    <div id="display-all">
-    <form action="/homepage">
-        <input type="submit" value="Display all items" />
-    </form>
-  </div>
 
     </div>
 
@@ -35,7 +31,12 @@
             <input type="text" class="form-control" placeholder="Enter tag here" name="search" autofocus="autofocus">
         </div>
     </form>
-
+    <h3><% include ./partials/alerts %><h3>
+      <div id="display-all">
+      <form action="/homepage">
+          <input type="submit" value="Reset search" />
+      </form>
+    </div>
 
     <h2>-Items-</h2>
 
@@ -76,7 +77,7 @@
             </li>
             <% }) %>
     </ul>
-<h2 style="font-size: 30px">You have reached the end of this content segment.</h2>
+<h2 id="nomoreload">You have reached the end of this content segment.</h2>
 
     <script src="js/script.js" charset="utf-8"></script>
 </body>

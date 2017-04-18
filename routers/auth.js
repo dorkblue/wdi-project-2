@@ -33,7 +33,8 @@ router.post('/signup', function(req, res) {
       passport.authenticate('local', {
         successRedirect: '/homepage',
         failureRedirect: '/failed',
-        successFlash: 'Account created and logged in'
+        successFlash: 'Account created and logged in',
+        failureFlash: 'Could not create account, please try again'
       })(req, res)
     }
   })
