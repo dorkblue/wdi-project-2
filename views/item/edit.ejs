@@ -19,6 +19,12 @@
     <label>Tag: </label>
       <input type="text" class="form-control" id="tag" placeholder="Tag" name="tag" value="<%= item.tag %>">
     </div>
+
+    <div class="form-group">
+    <label>Image URL: </label>
+      <input type="text" class="form-control" id="imageurl" placeholder="Image URL" name="imageurl" value="<%= item.imageurl %>">
+    </div>
+
     <input type="hidden" name="item_id" value="<%= item._id%>" />
     <center><input type="submit"></input></center>
   </form>

@@ -31,7 +31,8 @@ function editItem(req, res) {
     $set: {
       title: req.body.title,
       description: req.body.description,
-      tag: req.body.tag
+      tag: req.body.tag,
+      imageurl: req.body.imageurl
     }
   }, (err, output) => {
     if (err) console.error(err)

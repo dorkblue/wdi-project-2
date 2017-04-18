@@ -9,18 +9,24 @@
 </head>
 
 <body style="background: white">
+  <div>
+      <form action="/auth/logout" method="GET">
+          <input id="logout" type="submit" value="LOG OUT"></input>
+</div>
     <h1>Welcome, <%= userName %>!</h1>
     <center><img src="../img/hellowelcome.png"></center>
 
-    <div id="additem">
+    <div id="additemdiv">
         <form action="/create" method="GET">
-            <input type="submit" value="Add an item"></input>
+            <input id="additem" type="submit" value="Add an item"></input>
         </form>
     </div>
-    <div id="logout">
-        <form action="/auth/logout" method="GET">
-            <input type="submit" value="LOG OUT"></input>
-        </form>
+    <div id="display-all">
+    <form action="/homepage">
+        <input type="submit" value="Display all items" />
+    </form>
+  </div>
+
     </div>
 
     <form action="/homepage" method="POST">
@@ -30,7 +36,8 @@
         </div>
     </form>
 
-    <h2>Items:</h2>
+
+    <h2>-Items-</h2>
 
   <ul class="item-list">
         <% allItems.forEach(function(item, index) {%>
@@ -38,9 +45,9 @@
                 <ul>
                     <li>
                     <% if (item.imageurl === "") { %>
-                      <img src="http://www.novelupdates.com/img/noimagefound.jpg">
+                      <img src="http://www.novelupdates.com/img/noimagefound.jpg" height="400" width="400">
                     <%} else {%>
-                    <img src=<%= item.imageurl %>>
+                    <img src=<%= item.imageurl %> height="400" width="400">
                     <%}%>
 
                     </li>
@@ -69,7 +76,6 @@
             </li>
             <% }) %>
     </ul>
-
 <h2 style="font-size: 30px">You have reached the end of this content segment.</h2>
 
     <script src="js/script.js" charset="utf-8"></script>

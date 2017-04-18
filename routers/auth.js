@@ -44,7 +44,6 @@ router.post('/login', function(req, res) {
   successRedirect: '/homepage',
   failureRedirect: '/auth/login',
   failureFlash: 'Invalid username and/or password',
-  successFlash: 'You have logged in'
   })(req, res)
 });
 

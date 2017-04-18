@@ -191,18 +191,26 @@ textarea {
 	background: #00CF9E;
 }
 
-#itemlist {
+#itemlist, #additemdiv {
 	text-align: center;
-	margin-bottom: 20px;
+	margin-bottom: 5px;
 }
 
 #additem {
-	margin-bottom: 10px;
+	background: #9EE3FF;
+}
+
+#display-all {
+	margin-bottom: 5px;
 	text-align: center
 }
 
-#logout, #submit{
-	text-align: center
+#logout {
+	position: absolute;
+	background: #EB2A57;
+  top: 10px;
+  right: 10px;
+	width: 100px
 }
 
 .form-group {
