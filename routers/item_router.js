@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var Item = require('../models/item');
 var itemController = require('../controllers/item_controller')
 
 router.get('/homepage', itemController.itemList)
@@ -10,7 +9,9 @@ router.get('/create', function(req, res) {
 });
 
 router.post('/item/delete', itemController.removeItem)
+
 router.post('/item/edit', itemController.editItem)
+
 router.post('/create', itemController.createItem)
 
 router.post('/homepage', itemController.searchItem)
