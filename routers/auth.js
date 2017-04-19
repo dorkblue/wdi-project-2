@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var authController = require('../controllers/auth_controller')
 
+
 router.get('/signup', function(req, res) {
   res.render('auth/signup')
 })

@@ -87,7 +87,7 @@ function searchItem(req, res) {
 
 function editItemPage(req, res) {
   var itemId = req.params.itemId
-  Item.find({_id: itemId}, (err, output) => {
+  Item.find({ _id: itemId }, (err, output) => {
     res.render('item/edit', {
       foundItem: output
     })
