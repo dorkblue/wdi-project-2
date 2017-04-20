@@ -2,9 +2,7 @@ let Item = require('../models/item')
 var request = require('request');
 
 function itemList(req, res) {
-  Item.find({
-    user_id: req.user._id
-  }, (err, output) => {
+  Item.find({ user_id: req.user._id }, (err, output) => {
     var tags = []
     output.forEach(function (item) {
       if ( tags.includes(item.tag) === false) {
@@ -12,8 +10,18 @@ function itemList(req, res) {
       }
     })
     if (err) res.send(err)
+    newOutput = []
+    if (req.query.Tags) {
+      output.forEach(function(item) {
+        if (item.tag === req.query.Tags) {
+          newOutput.push(item)
+        }
+      })
+    } else {
+      newOutput = output
+    }
     res.render('index', {
-      allItems: output,
+      allItems: newOutput,
       userName: req.user.username,
       allTags: tags
     })
@@ -37,9 +45,7 @@ function createItem(req, res) {
       var url = 'http://api.linkpreview.net/?key=' + process.env.LINK_PREVIEW_API_KEY + '&q=' + encoded
       request(url, function(error, response, body) {
         var parseBody = JSON.parse(body)
-        Item.update({
-          _id: createdItem._id
-        }, {
+        Item.update({ _id: createdItem._id }, {
           $set: {
             title: parseBody.title,
             description: parseBody.description,
@@ -65,9 +71,7 @@ function removeItem(req, res) {
 }
 
 function editItem(req, res) {
-  Item.update({
-    _id: req.body.item_id
-  }, {
+  Item.update({ _id: req.body.item_id }, {
     $set: {
       title: req.body.title,
       description: req.body.description,
@@ -79,46 +83,6 @@ function editItem(req, res) {
     res.redirect('/homepage')
   })
 }
-
-function searchItem(req, res) {
-  Item.find( { tag: req.body.Tags, user_id: req.user._id }, (err, output) => {
-    console.log(req.body.Tags);
-    var tags = []
-    output.forEach(function (item) {
-      if ( tags.includes(item.tag) === false) {
-        tags.push(item.tag)
-      }
-    })
-    res.render('index', {
-      allItems: output,
-      userName: req.user.username,
-      allTags: tags
-    })
-  })
-}
-
-// function getAllTags(req, res) {
-// //  +++++FIRST WAY++++++
-//   Item.find({ user_id: req.user._id }, (err, data) => {
-//       console.log("Tags here: ", data);
-//       var tags = []
-//       data.forEach(function (item) {
-//         if ( tags.includes(item.tag) === false) {
-//           tags.push(item.tag)
-//         }
-//       })
-//       res.render('index', {
-//         allTags: tags
-//       })
-//   })
-//   //  +++++SECOND WAY++++++
-//   // Item.find( { user_id: req.user._id }, 'tag', (err, output) => {
-//   //   console.log("Tags here: ", output);
-//   //   res.render('index', {
-//   //     allTags: output
-//   //   })
-//   // })
-// }
 
 function editItemPage(req, res) {
   var itemId = req.params.itemId
@@ -133,7 +97,6 @@ module.exports = {
   itemList: itemList,
   createItem: createItem,
   removeItem: removeItem,
-  searchItem: searchItem,
   editItemPage: editItemPage,
-  editItem: editItem,
+  editItem: editItem
 }

@@ -30,7 +30,7 @@
 
     <h2 style="font-size: 30px"><label>Search for item(s) by tag</label></h2>
 
-          <center>  <form action="/homepage" method="POST">
+          <center>  <form action="/homepage" method="GET">
                 <select name="Tags">
           <% allTags.forEach(function(tag, index) {%>
           <option value="<%= tag %>"><%= tag %></option>
@@ -55,7 +55,7 @@
                 <ul>
                     <li>
                     <% if (item.imageurl === "") { %>
-                      <img src="http://www.novelupdates.com/img/noimagefound.jpg" height="400" width="400" id="image">
+                      <img src="../img/noimage.png" height="400" width="400" id="image">
                     <%} else {%>
                     <img src=<%= item.imageurl %> height="400" width="400" id="image">
                     <%}%>

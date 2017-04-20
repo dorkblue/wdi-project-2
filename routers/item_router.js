@@ -14,7 +14,7 @@ router.post('/item/edit', itemController.editItem)
 
 router.post('/create', itemController.createItem)
 
-router.post('/homepage', itemController.searchItem)
+// router.post('/homepage', itemController.searchItem)
 
 router.get('/item/:itemId/edit', itemController.editItemPage)
 
