@@ -2,15 +2,20 @@ let Item = require('../models/item')
 var request = require('request');
 
 function itemList(req, res) {
-  console.log('log in ITEMLIST', req.user)
   Item.find({
     user_id: req.user._id
   }, (err, output) => {
+    var tags = []
+    output.forEach(function (item) {
+      if ( tags.includes(item.tag) === false) {
+        tags.push(item.tag)
+      }
+    })
     if (err) res.send(err)
-    // console.log(output)
     res.render('index', {
       allItems: output,
-      userName: req.user.username
+      userName: req.user.username,
+      allTags: tags
     })
   })
 }
@@ -76,14 +81,44 @@ function editItem(req, res) {
 }
 
 function searchItem(req, res) {
-  Item.find( { tag: req.body.search, user_id: req.user._id }, (err, output) => {
-    if (output == null) req.flash('Could not find any items, please try again!')
+  Item.find( { tag: req.body.Tags, user_id: req.user._id }, (err, output) => {
+    console.log(req.body.Tags);
+    var tags = []
+    output.forEach(function (item) {
+      if ( tags.includes(item.tag) === false) {
+        tags.push(item.tag)
+      }
+    })
     res.render('index', {
       allItems: output,
-      userName: req.user.username
+      userName: req.user.username,
+      allTags: tags
     })
   })
 }
+
+// function getAllTags(req, res) {
+// //  +++++FIRST WAY++++++
+//   Item.find({ user_id: req.user._id }, (err, data) => {
+//       console.log("Tags here: ", data);
+//       var tags = []
+//       data.forEach(function (item) {
+//         if ( tags.includes(item.tag) === false) {
+//           tags.push(item.tag)
+//         }
+//       })
+//       res.render('index', {
+//         allTags: tags
+//       })
+//   })
+//   //  +++++SECOND WAY++++++
+//   // Item.find( { user_id: req.user._id }, 'tag', (err, output) => {
+//   //   console.log("Tags here: ", output);
+//   //   res.render('index', {
+//   //     allTags: output
+//   //   })
+//   // })
+// }
 
 function editItemPage(req, res) {
   var itemId = req.params.itemId
@@ -100,5 +135,5 @@ module.exports = {
   removeItem: removeItem,
   searchItem: searchItem,
   editItemPage: editItemPage,
-  editItem: editItem
+  editItem: editItem,
 }

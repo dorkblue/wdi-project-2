@@ -35,7 +35,7 @@ h3 {
 	color: #D60D0D;
 	text-align: center;
 	font-family: 'Poppins';
-	font-size: 10px;
+	font-size: 15px;
 }
 
 form {
@@ -162,6 +162,39 @@ textarea {
 	color: #6D7781;
 }
 
+select {
+	margin-top: 8px;
+	margin-bottom: 0px;
+	text-align: center;
+  background: transparent;
+	color: white;
+  width: 150px;
+  padding: 5px 30px 5px 5px;
+	font-family: "Poppins";
+  font-size: 14px;
+  border: none;
+  height: 38px;
+	outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url(http://68.media.tumblr.com/tumblr_lkl5s8Ay6F1qfamg6.gif) 96% / 15% no-repeat #FADAD8;
+}
+
+#search-submit {
+	width: 100px;
+	background: #d3e0f7;
+}
+
+#search-submit:hover {
+	background: #B2CBF7
+}
+
+#reset-search {
+	margin-top: 0px;
+	color: white
+}
+
 #remove-item {
 	background: #EB6A88;
 	border: 0;
@@ -279,4 +312,21 @@ textarea {
 	transform-origin:70% 70%;
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
+}
+
+@media (max-width: 420px) {
+	body {
+		margin: 5px;
+	}
+	input[type="submit"], input[type="text"], input[type="password"], #edit-item, #remove-item {
+		width: 280px;
+	}
+	ul, li {
+		margin: 2px;
+		width: 280px
+	}
+	#image {
+		height: 260px;
+		width: 260px
+	}
 }

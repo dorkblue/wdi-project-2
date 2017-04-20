@@ -14,7 +14,7 @@
     <div id="logoutbutton">
         <form action="/auth/logout" method="GET">
             <input id="logout" type="submit" value="LOG OUT"></input>
-          </form>
+        </form>
     </div>
     <h1>Welcome, <%= userName %>!</h1>
     <center><img src="../img/hellowelcome.png"></center>
@@ -27,16 +27,23 @@
 
     </div>
 
-    <form action="/homepage" method="POST">
-        <h2 style="font-size: 30px"><label>Search for item(s) by tag</label></h2>
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Enter tag here" name="search" autofocus="autofocus">
-        </div>
-    </form>
-    <h3><% include ./partials/alerts %><h3>
+
+    <h2 style="font-size: 30px"><label>Search for item(s) by tag</label></h2>
+
+          <center>  <form action="/homepage" method="POST">
+                <select name="Tags">
+          <% allTags.forEach(function(tag, index) {%>
+          <option value="<%= tag %>"><%= tag %></option>
+          <% }) %>
+        </select>
+                <input type="submit" id="search-submit">
+            </form></center>
+
+
+        <h3><% include ./partials/alerts %><h3>
       <div id="display-all">
       <form action="/homepage">
-          <input type="submit" value="Reset search" />
+          <input type="submit" id="reset-search" value="Reset search" />
       </form>
     </div>
 
@@ -48,9 +55,9 @@
                 <ul>
                     <li>
                     <% if (item.imageurl === "") { %>
-                      <img src="http://www.novelupdates.com/img/noimagefound.jpg" height="400" width="400">
+                      <img src="http://www.novelupdates.com/img/noimagefound.jpg" height="400" width="400" id="image">
                     <%} else {%>
-                    <img src=<%= item.imageurl %> height="400" width="400">
+                    <img src=<%= item.imageurl %> height="400" width="400" id="image">
                     <%}%>
 
                     </li>

@@ -11,14 +11,12 @@ function createUser(req, res) {
   }, function(err, createdUser) {
     if (err) {
       console.log('err', err)
-      req.flash('error', 'Could not create user account');
+      req.flash('error', 'Oppsy, could not create user account, please try again!');
       res.redirect('/auth/signup');
     } else {
-      console.log('user is authenticated');
       passport.authenticate('local', {
         successRedirect: '/homepage',
-        failureRedirect: '/',
-        failureFlash: 'Could not create account, please try again'
+        failureRedirect: '/'
       })(req, res)
     }
   })
